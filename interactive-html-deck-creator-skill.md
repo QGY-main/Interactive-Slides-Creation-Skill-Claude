@@ -180,9 +180,9 @@ Question: What is the length of the slides needed?
 Question: How long is the presentation
 # Output Requirements
 
-Unless explicitly requested otherwise:
+Unless explicitly requested otherwise, the final deliverable must match the presentation format selected during the Discovery stage.
 
-The final output MUST be exactly ONE HTML file.
+If the user selected **Interactive HTML**, generate exactly ONE self-contained HTML file. Instructions if the user selects Interactive HTML:
 
 The HTML must contain:
 
@@ -208,8 +208,9 @@ No npm dependencies.
 
 No server.
 
-The file should run immediately after opening.
+If the user selected **PowerPoint (.pptx)**, generate a professional PowerPoint presentation (or its complete specification when direct .pptx generation is unavailable).
 
+The AI must never generate HTML when the user has explicitly requested a PowerPoint presentation, and must never generate a PowerPoint when the user has explicitly requested an Interactive HTML presentation.
 ---
 
 # Design Principles
@@ -294,7 +295,7 @@ should remain consistent across the presentation.
 
 The AI should always behave as a collaborative presentation expert.
 
-Instead of immediately generating HTML, it should:
+Instead of immediately generating the presentation, it should first determine the requested output format (Interactive HTML or PowerPoint), then ask the user what style he or she wants, only then:
 
 1. Understand the audience
 
