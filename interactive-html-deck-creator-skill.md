@@ -154,14 +154,17 @@ question below. If the user picks PowerPoint, skip the Interactive HTML
 style options that don't apply and adapt the style question to 
 PowerPoint-appropriate design language, but still ask it.
 
-**MUST ASK — STYLE**
-**The AI is to ask this question in all conversations**
+# **MUST ASK — STYLE**
+
+# **THE AI IS REQUIRED TO ASK THIS QUESTION IN ALL CONVERSATIONS BEFORE GENERATION**
+
 Question: Which presentation style best matches your vision?
 
 **Standard Questions to ask**
 
 **MUST ASK**
-**The AI is to ask this question in all conversations**
+# **THE AI IS REQUIRED TO ASK THIS QUESTION IN ALL CONVERSATIONS BEFORE GENERATION**
+
 Question: Which presentation style best matches your vision?
 Options: 
 
@@ -1540,6 +1543,7 @@ Every slide should satisfy the following principles.
 
 ✓ Clear call to action (when appropriate)
 
+✓ **You are to ask questions when information is missing and continue to ask until you have all required details, do not strat genertaing immediately**
 ---
 
 # Layout Selection Strategy
@@ -3949,3 +3953,930 @@ Before HTML generation begins, verify:
 ✓ Browser compatibility reviewed
 
 Only after these checks pass should the AI proceed to the final implementation stage, where the complete interactive HTML presentation is generated.
+
+# **References**
+
+If User asks for the style Luxury Black (dark, minimal, high-contrast), you are **obliagted** use this design and **replace the specific placeholders to suit the content**:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck Template — Luxury Black</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;
+  --surface:#131111;
+  --border:rgba(255,255,255,0.08);
+  --border-strong:rgba(212,175,110,0.35);
+  --text:#f2efe9;
+  --text-dim:#a8a29a;
+  --text-dimmer:#726b62;
+  --gold:#d4af6e;
+  --gold-soft:#e8cd9a;
+  --radius:2px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow:hidden;height:100%;}
+::selection{background:var(--gold);color:#0a0a0a;}
+.serif{font-family:'Cormorant Garamond',serif;}
+
+#deck{position:relative;width:100vw;height:100vh;}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5vh 9vw;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(18px);
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),visibility .7s;
+  background:var(--bg);
+}
+.slide::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background: radial-gradient(700px 400px at 88% 8%, rgba(212,175,110,.06), transparent 65%);
+}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);}
+.slide-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:1;}
+
+.eyebrow{
+  display:flex;align-items:center;gap:12px;
+  font-size:11.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:26px;
+}
+.eyebrow::after{content:'';flex:0 0 40px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+
+h1.slide-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.3rem,4.6vw,4.1rem);font-weight:600;line-height:1.12;letter-spacing:-.01em;margin:0 0 22px;color:var(--text);}
+.slide-title .accent{color:var(--gold-soft);font-style:italic;}
+p.lede{font-size:clamp(1rem,1.3vw,1.2rem);color:var(--text-dim);line-height:1.65;max-width:780px;margin:0 0 8px;font-weight:300;}
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+.active .reveal{opacity:1;transform:translateY(0);}
+.r1{transition-delay:.05s}.r2{transition-delay:.15s}.r3{transition-delay:.25s}.r4{transition-delay:.35s}
+.r5{transition-delay:.45s}.r6{transition-delay:.55s}.r7{transition-delay:.65s}.r8{transition-delay:.75s}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px;position:relative;}
+.card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s ease;}
+.card:hover::before{height:100%;}
+.card:hover{border-color:var(--border-strong);}
+.card-title{font-weight:600;font-size:15px;margin-bottom:8px;color:var(--text);letter-spacing:.01em;}
+.card-body{font-size:13.5px;color:var(--text-dim);line-height:1.6;font-weight:300;}
+.card-num{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:10px;}
+
+.pill{display:inline-flex;align-items:center;padding:6px 14px;font-size:11.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:transparent;border:1px solid var(--border-strong);color:var(--gold-soft);border-radius:1px;}
+.pill-dim{border-color:var(--border);color:var(--text-dim);}
+.pill-warn{border-color:rgba(200,120,90,.4);color:#d99a7c;}
+.pill-good{border-color:rgba(160,180,140,.4);color:#a8c090;}
+.pill-plain{text-transform:none;letter-spacing:0;justify-content:flex-start;padding:16px 18px;}
+
+.divider{width:100%;height:1px;background:linear-gradient(90deg,var(--gold),transparent 60%);opacity:.5;margin:20px 0;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:4.2rem;font-weight:600;color:var(--gold-soft);line-height:1;}
+.stat-label{color:var(--text-dim);font-size:14px;margin-top:12px;font-weight:300;}
+
+.grid{display:grid;gap:16px;}
+.grid-2{grid-template-columns:1fr 1fr;}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.flow-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;}
+.flow-row .card{flex:1;min-width:150px;}
+.flow-arrow-txt{color:var(--text-dimmer);}
+
+/* nav */
+#progress-track{position:fixed;top:0;left:0;height:1px;width:100%;background:rgba(255,255,255,.06);z-index:50;}
+#progress-bar{height:100%;background:var(--gold);width:0%;transition:width .5s ease;}
+#dots{position:fixed;right:30px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:11px;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s ease;}
+.dot:hover{background:rgba(212,175,110,.5);}
+.dot.active{background:var(--gold);height:20px;border-radius:2px;}
+
+#slide-counter{position:fixed;left:9vw;bottom:30px;font-size:11px;color:var(--text-dimmer);z-index:50;letter-spacing:.1em;}
+#slide-counter b{color:var(--gold-soft);font-weight:500;}
+
+.nav-btn{position:fixed;bottom:26px;width:38px;height:38px;border-radius:50%;background:transparent;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;transition:all .3s ease;color:var(--text-dim);font-size:14px;}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold-soft);}
+#prev-btn{right:80px;}
+#next-btn{right:32px;}
+
+.logo-mark{position:fixed;left:9vw;top:30px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;letter-spacing:.03em;z-index:50;color:var(--text);}
+.logo-mark span{color:var(--gold);}
+
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;}}
+@media(max-width:768px){
+  .slide{padding:9vh 6vw;}
+  #dots{display:none;}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr!important;}
+}
+@media print{
+  #dots,#prev-btn,#next-btn,#progress-track,.logo-mark,#slide-counter{display:none!important;}
+  .slide{position:relative;opacity:1!important;visibility:visible!important;transform:none!important;page-break-after:always;height:100vh;}
+}
+.flow-line{stroke:var(--border-strong);stroke-width:1;fill:none;}
+.flow-arrow{fill:var(--text-dimmer);}
+</style>
+</head>
+<body>
+
+<div class="logo-mark" id="logo-mark">Brand<span>Name</span></div>
+<div id="progress-track"><div id="progress-bar"></div></div>
+<div id="slide-counter"><b id="cur-num">01</b> — <span id="total-num">00</span></div>
+
+<div id="deck"></div>
+
+<div id="dots"></div>
+<div class="nav-btn" id="prev-btn" aria-label="Previous slide">←</div>
+<div class="nav-btn" id="next-btn" aria-label="Next slide">→</div>
+
+<script>
+/* ============================================================
+   LUXURY BLACK DECK — CONTENT CONFIG
+   Edit DECK below to reuse this exact design for new content.
+   Everything below the "RENDER ENGINE" comment is generic —
+   you should not need to touch it.
+   ============================================================ */
+
+const DECK = {
+  brand: { first: "Brand", accent: "Name" },   // top-left logo mark
+  slides: [
+
+    // ---- TITLE SLIDE ----
+    {
+      type: "title",
+      eyebrow: "Seed Round — Investor Overview",
+      title: "Your bold headline <br> goes <em>right here.</em>",
+      lede: "One or two sentences describing what you do and why it matters.",
+      pills: ["Primary Tag", "Secondary Tag", "Tertiary Tag"]
+    },
+
+    // ---- TEXT + CARD GRID (2 col) ----
+    {
+      type: "cards",
+      eyebrow: "The Problem",
+      title: "A short framing statement <em>with an emphasized clause.</em>",
+      lede: "Optional supporting line under the title.",
+      columns: 2,
+      cards: [
+        { title: "Question one?", body: "Supporting detail for the first point." },
+        { title: "Question two?", body: "Supporting detail for the second point." },
+        { title: "Question three?", body: "Supporting detail for the third point." },
+        { title: "Question four?", body: "Supporting detail for the fourth point." }
+      ],
+      quote: "An italic closing line that reinforces the theme."
+    },
+
+    // ---- TWO-COLUMN LIST COMPARISON ----
+    {
+      type: "compare",
+      eyebrow: "Who Feels It",
+      title: "Framing for a two-sided <em>comparison.</em>",
+      left:  { label: "Side A", tone: "warn", items: ["Point one", "Point two", "Point three", "Point four"] },
+      right: { label: "Side B", tone: "plain", items: ["Point one", "Point two", "Point three", "Point four"] }
+    },
+
+    // ---- SVG PROCESS DIAGRAM (4-box flow, edit boxes array) ----
+    {
+      type: "diagram",
+      eyebrow: "Current State",
+      title: "A process framing <em>title.</em>",
+      boxes: [
+        { x:20,  y:20,  w:170, h:100, title:"1. Step one",  lines:["Short description", "line here."] },
+        { x:270, y:20,  w:320, h:100, title:"2. Step two",  lines:["Description line one.", "Description line two."], highlight:true, tag:"KEY GAP" },
+        { x:670, y:20,  w:200, h:100, title:"3. Step three", lines:["Description line one.", "Description line two."] },
+        { x:740, y:190, w:220, h:65,  title:"4. Step four",  lines:["Description line one.", "Description line two."] }
+      ],
+      // arrows are drawn 1->2, 2->3 (horizontal), 3->4 (curved down) by default
+    },
+
+    // ---- 4-UP CARD GRID (no columns arg = simple grid) ----
+    {
+      type: "cards",
+      eyebrow: "Root Cause",
+      title: "The real bottleneck is <em>this thing.</em>",
+      columns: 2,
+      cards: [
+        { title: "Factor one", body: "Explanation of the first contributing factor." },
+        { title: "Factor two", body: "Explanation of the second contributing factor." },
+        { title: "Factor three", body: "Explanation of the third contributing factor." },
+        { title: "Factor four", body: "Explanation of the fourth contributing factor." }
+      ]
+    },
+
+    // ---- STAT CALLOUTS ----
+    {
+      type: "stats",
+      eyebrow: "Validation",
+      title: "<em>Headline number</em> that proves the point.",
+      stats: [
+        { num: "4/6", label: "described the same underlying problem" },
+        { num: "3/6", label: "independently proposed a similar fix" }
+      ]
+    },
+
+    // ---- COMPETITIVE / USEFUL-VS-MISSING GRID ----
+    {
+      type: "cards",
+      eyebrow: "Why Now / Why Us",
+      title: "Where <em>we</em> fit",
+      columns: 2,
+      cards: [
+        {
+          title: "Alternative A",
+          bodyHtml: '<span class="pill pill-good" style="margin-right:8px;">Useful for</span>what it does well<br><br><span class="pill pill-warn" style="margin-right:8px;">Missing</span>what it lacks'
+        },
+        {
+          title: "Alternative B",
+          bodyHtml: '<span class="pill pill-good" style="margin-right:8px;">Useful for</span>what it does well<br><br><span class="pill pill-warn" style="margin-right:8px;">Missing</span>what it lacks'
+        }
+      ]
+    },
+
+    // ---- SIMPLE STATEMENT + PILLS ----
+    {
+      type: "title",
+      eyebrow: "The Solution",
+      title: "How you solve it — <em>in one sentence.</em>",
+      pills: ["Feature one", "Feature two", "Feature three", "Feature four"],
+      align: "left"
+    },
+
+    // ---- 4-STEP NUMBERED PROCESS ----
+    {
+      type: "steps",
+      eyebrow: "Product",
+      title: "Steps from <em>A to B.</em>",
+      steps: [
+        { n: "01", title: "First step", body: "What happens in this step." },
+        { n: "02", title: "Second step", body: "What happens in this step." },
+        { n: "03", title: "Third step", body: "What happens in this step." },
+        { n: "04", title: "Fourth step", body: "What happens in this step." }
+      ]
+    },
+
+    // ---- PIPELINE / ARCHITECTURE FLOW ROWS ----
+    {
+      type: "pipeline",
+      eyebrow: "How It Works",
+      title: "How data moves <em>through the system.</em>",
+      rows: [
+        [
+          { title: "1 · Stage one", body: "Description" },
+          { title: "2 · Stage two", body: "Description" },
+          { title: "3 · Stage three", body: "Description" }
+        ],
+        [
+          { title: "6 · Stage six", body: "Description" },
+          { title: "5 · Stage five", body: "Description" },
+          { title: "4 · Stage four", body: "Description", highlight:true }
+        ]
+      ]
+    },
+
+    // ---- PILL LIST (deliverable / feature list) ----
+    {
+      type: "pillList",
+      eyebrow: "The Deliverable",
+      title: "What the customer <em>receives.</em>",
+      columns: 3,
+      items: ["Item one", "Item two", "Item three", "Item four", "Item five", "Item six"]
+    },
+
+    // ---- METRICS / CATEGORIZED LISTS ----
+    {
+      type: "cards",
+      eyebrow: "How We Measure Success",
+      title: "Metrics across <em>three dimensions.</em>",
+      columns: 3,
+      cards: [
+        { pill: "Category A", bodyHtml: "Metric one<br>Metric two<br>Metric three<br>Metric four" },
+        { pill: "Category B", bodyHtml: "Metric one<br>Metric two<br>Metric three<br>Metric four" },
+        { pill: "Category C", pillTone: "warn", bodyHtml: "Metric one<br>Metric two<br>Metric three<br>Metric four" }
+      ]
+    },
+
+    // ---- BUSINESS MODEL (2 col cards + pill row) ----
+    {
+      type: "cards",
+      eyebrow: "Business Model",
+      title: "Free for X. <em>Infrastructure for Y.</em>",
+      columns: 2,
+      cards: [
+        { title: "#Beneficiary", body: "Who benefits and how.", dividerAfter: true, title2: "#Customer", body2: "Who pays and why." },
+        { title: "Go-to-market", body: "Step one → step two → step three → step four." }
+      ],
+      pills: ["Benefit one", "Benefit two", "Benefit three", "Benefit four"]
+    },
+
+    // ---- CLOSING SLIDE ----
+    {
+      type: "title",
+      eyebrow: "Closing",
+      title: "A memorable closing line <br> that ends on <em>the theme.</em>",
+      lede: "One line reinforcing the brand or mission.",
+      align: "left",
+      big: true
+    }
+
+  ]
+};
+
+/* ============================================================
+   RENDER ENGINE — generic, content-agnostic
+   ============================================================ */
+
+function el(tag, cls, html){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+}
+
+function renderEyebrowTitle(container, slide){
+  if (slide.eyebrow) container.appendChild(el('div','eyebrow reveal r1', slide.eyebrow));
+  if (slide.title) container.appendChild(el('h1','slide-title reveal r2', styleAccent(slide.title)));
+  if (slide.lede) container.appendChild(el('p','lede reveal r3', slide.lede));
+}
+
+// converts <em>...</em> markers into the gold accent span
+function styleAccent(str){
+  return str.replace(/<em>/g,'<span class="accent">').replace(/<\/em>/g,'</span>');
+}
+
+function renderSlide(slide){
+  const section = el('section','slide');
+  const inner = el('div','slide-inner');
+  if (slide.align === 'left' || slide.type === 'title') inner.style.textAlign = 'left';
+
+  switch(slide.type){
+
+    case 'title': {
+      renderEyebrowTitle(inner, Object.assign({}, slide, {
+        title: slide.big ? slide.title : slide.title
+      }));
+      if (slide.big) inner.querySelector('.slide-title').style.fontSize = 'clamp(2.6rem,5.8vw,4.6rem)';
+      else inner.querySelector('.slide-title').style.fontSize = 'clamp(2.8rem,6.4vw,5.6rem)';
+      if (slide.pills && slide.pills.length){
+        const row = el('div','reveal r4');
+        row.style.cssText = 'display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;';
+        slide.pills.forEach((p,i)=> row.appendChild(el('span', 'pill' + (i>0?' pill-dim':''), p)));
+        inner.appendChild(row);
+      }
+      break;
+    }
+
+    case 'cards': {
+      renderEyebrowTitle(inner, slide);
+      const grid = el('div', 'grid grid-' + (slide.columns||2) + ' reveal r4');
+      slide.cards.forEach(c=>{
+        const card = el('div','card');
+        if (c.pill) card.appendChild(el('div','pill' + (c.pillTone?' pill-'+c.pillTone:''), c.pill));
+        if (c.title) card.appendChild(el('div','card-title', c.title));
+        if (c.body) card.appendChild(el('div','card-body', c.body));
+        if (c.bodyHtml) card.appendChild(el('div','card-body', c.bodyHtml));
+        if (c.dividerAfter) card.appendChild(el('div','divider'));
+        if (c.title2) card.appendChild(el('div','card-title', c.title2));
+        if (c.body2) card.appendChild(el('div','card-body', c.body2));
+        grid.appendChild(card);
+      });
+      inner.appendChild(grid);
+      if (slide.quote){
+        const q = el('p','reveal r5 serif', slide.quote);
+        q.style.cssText='margin-top:26px;color:var(--gold-soft);font-style:italic;font-size:19px;';
+        inner.appendChild(q);
+      }
+      if (slide.pills && slide.pills.length){
+        const row = el('div','reveal r5');
+        row.style.cssText = 'display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;';
+        slide.pills.forEach(p=> row.appendChild(el('span','pill pill-good', p)));
+        inner.appendChild(row);
+      }
+      break;
+    }
+
+    case 'compare': {
+      renderEyebrowTitle(inner, slide);
+      const grid = el('div','grid grid-2 reveal r3');
+      grid.style.marginTop = '26px';
+      [slide.left, slide.right].forEach(side=>{
+        const card = el('div','card');
+        card.appendChild(el('div','pill' + (side.tone && side.tone!=='plain' ? ' pill-'+side.tone : ''), side.label));
+        const ul = el('ul');
+        ul.style.cssText='font-size:14.5px;color:var(--text-dim);line-height:2.1;padding-left:18px;margin:10px 0 0;font-weight:300;';
+        side.items.forEach(it=> ul.appendChild(el('li',null,it)));
+        card.appendChild(ul);
+        grid.appendChild(card);
+      });
+      inner.appendChild(grid);
+      break;
+    }
+
+    case 'diagram': {
+      renderEyebrowTitle(inner, slide);
+      const wrap = el('div','reveal r3');
+      wrap.style.marginTop = '22px';
+      wrap.innerHTML = buildDiagramSVG(slide.boxes);
+      inner.appendChild(wrap);
+      break;
+    }
+
+    case 'stats': {
+      renderEyebrowTitle(inner, slide);
+      const row = el('div','reveal r3');
+      row.style.cssText='display:flex;gap:26px;margin-top:36px;flex-wrap:wrap;';
+      slide.stats.forEach(s=>{
+        const card = el('div','card');
+        card.style.cssText='flex:1;min-width:260px;text-align:center;padding:32px;';
+        card.appendChild(el('div','stat-num', s.num));
+        card.appendChild(el('div','stat-label', s.label));
+        row.appendChild(card);
+      });
+      inner.appendChild(row);
+      break;
+    }
+
+    case 'steps': {
+      renderEyebrowTitle(inner, slide);
+      const grid = el('div','grid grid-4 reveal r3');
+      grid.style.marginTop = '24px';
+      slide.steps.forEach(s=>{
+        const card = el('div','card');
+        card.appendChild(el('div','card-num', s.n));
+        card.appendChild(el('div','card-title', s.title));
+        card.appendChild(el('div','card-body', s.body));
+        grid.appendChild(card);
+      });
+      inner.appendChild(grid);
+      break;
+    }
+
+    case 'pipeline': {
+      renderEyebrowTitle(inner, slide);
+      slide.rows.forEach((row,ri)=>{
+        const rowEl = el('div','flow-row reveal r' + (3+ri));
+        row.forEach((box,bi)=>{
+          if (bi>0) rowEl.appendChild(el('span','flow-arrow-txt', ri===0 ? '→' : '←'));
+          const card = el('div','card' + (box.highlight ? '' : ''));
+          if (box.highlight) card.style.borderColor = 'var(--border-strong)';
+          card.appendChild(el('div','card-title', box.title));
+          card.querySelector('.card-title').style.fontSize = '13px';
+          card.appendChild(el('div','card-body', box.body));
+          rowEl.appendChild(card);
+        });
+        inner.appendChild(rowEl);
+      });
+      break;
+    }
+
+    case 'pillList': {
+      renderEyebrowTitle(inner, slide);
+      const grid = el('div', 'grid grid-' + (slide.columns||3) + ' reveal r3');
+      grid.style.marginTop = '24px';
+      slide.items.forEach(it=> grid.appendChild(el('span','pill pill-dim pill-plain', it)));
+      inner.appendChild(grid);
+      break;
+    }
+  }
+
+  section.appendChild(inner);
+  return section;
+}
+
+function buildDiagramSVG(boxes){
+  const arrowDefs = `<defs><marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" class="flow-arrow"/></marker></defs>`;
+  let arrows = '';
+  for (let i=0;i<boxes.length-1;i++){
+    const a = boxes[i], b = boxes[i+1];
+    if (a.y === b.y){
+      arrows += `<line x1="${a.x+a.w}" y1="${a.y+a.h/2}" x2="${b.x}" y2="${b.y+b.h/2}" class="flow-line" marker-end="url(#arrow1)"/>`;
+    } else {
+      const midX = a.x + a.w*0.7;
+      arrows += `<path d="M${midX},${a.y+a.h} C ${midX},${b.y-40} ${midX},${b.y-20} ${midX},${b.y-10}" class="flow-line" marker-end="url(#arrow1)"/>`;
+    }
+  }
+  let rects = '';
+  boxes.forEach(b=>{
+    rects += `<rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" fill="var(--surface)" stroke="${b.highlight?'var(--gold)':'var(--border)'}" stroke-width="1"/>`;
+    let ty = b.y + 32;
+    if (b.tag){
+      rects += `<text x="${b.x+20}" y="${ty-8}" fill="var(--gold)" font-weight="600" font-size="12" letter-spacing="1">${b.tag}</text>`;
+    }
+    rects += `<text x="${b.x+20}" y="${ty}" fill="#f2efe9" font-weight="600" font-size="15">${b.title}</text>`;
+    (b.lines||[]).forEach((line,i)=>{
+      rects += `<text x="${b.x+20}" y="${ty+20+i*16}" fill="var(--text-dim)" font-size="11.5">${line}</text>`;
+    });
+  });
+  const maxX = Math.max(...boxes.map(b=>b.x+b.w)) + 20;
+  const maxY = Math.max(...boxes.map(b=>b.y+b.h)) + 20;
+  return `<svg viewBox="0 0 ${maxX} ${maxY}" style="width:100%;height:auto;">${arrowDefs}${arrows}${rects}</svg>`;
+}
+
+/* ---- boot ---- */
+(function(){
+  document.getElementById('logo-mark').innerHTML = DECK.brand.first + '<span>' + DECK.brand.accent + '</span>';
+
+  const deckEl = document.getElementById('deck');
+  const slideEls = DECK.slides.map(s => renderSlide(s));
+  slideEls.forEach(s => deckEl.appendChild(s));
+
+  const total = slideEls.length;
+  let current = 0;
+  document.getElementById('total-num').textContent = String(total).padStart(2,'0');
+
+  const dotsWrap = document.getElementById('dots');
+  slideEls.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0?' active':'');
+    d.addEventListener('click',()=>goTo(i));
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function render(){
+    slideEls.forEach((s,i)=>s.classList.toggle('active', i===current));
+    dots.forEach((d,i)=>d.classList.toggle('active', i===current));
+    document.getElementById('cur-num').textContent = String(current+1).padStart(2,'0');
+    document.getElementById('progress-bar').style.width = ((current+1)/total*100)+'%';
+    if (history.replaceState) history.replaceState(null,'','#slide-'+(current+1));
+  }
+  function goTo(i){ current = Math.max(0, Math.min(total-1, i)); render(); }
+  function next(){ goTo(current+1); }
+  function prev(){ goTo(current-1); }
+
+  document.getElementById('next-btn').addEventListener('click', next);
+  document.getElementById('prev-btn').addEventListener('click', prev);
+
+  window.addEventListener('keydown', (e)=>{
+    if (['ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key==='Home') { e.preventDefault(); goTo(0); }
+    else if (e.key==='End') { e.preventDefault(); goTo(total-1); }
+    else if (e.key.toLowerCase()==='f') { toggleFullscreen(); }
+  });
+
+  let touchStartX = 0;
+  window.addEventListener('touchstart', e=> touchStartX = e.changedTouches[0].screenX);
+  window.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 60) { dx < 0 ? next() : prev(); }
+  });
+
+  let wheelLock = false;
+  window.addEventListener('wheel', (e)=>{
+    if (wheelLock) return;
+    if (Math.abs(e.deltaY) < 30) return;
+    wheelLock = true;
+    e.deltaY > 0 ? next() : prev();
+    setTimeout(()=>wheelLock=false, 700);
+  }, {passive:true});
+
+  function toggleFullscreen(){
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  }
+
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#slide-')) {
+    const n = parseInt(hash.replace('#slide-',''),10);
+    if (!isNaN(n) && n>=1 && n<=total) current = n-1;
+  }
+  render();
+})();
+</script>
+</body>
+</html>
+
+If User asks for the style Glassmorphism, Cyber Punk or Aurora Gradient you are **obliagted** use this design and **replace the specific placeholders to suit the content**:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Deck Title</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+/* ============================================================
+   REUSABLE DESIGN SYSTEM — do not edit unless changing theme
+   ============================================================ */
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  background: #0a0e17;
+  color: #ffffff;
+}
+
+.glow-text {
+  background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+}
+
+.badge {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border-radius: 9999px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.pulse {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
+  50% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.5); }
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #374151;
+  transition: all .4s;
+}
+
+.dot.active {
+  background: #818cf8;
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(129, 140, 248, .6);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 40px rgba(99, 102, 241, .5);
+  transform: translateY(-2px);
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.slide-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 76rem;
+  padding: 0 1.5rem;
+  transition: opacity .7s ease, transform .7s ease;
+  max-height: 82vh;
+  overflow-y: auto;
+}
+
+.slide-inactive {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slide-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+  border: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+<canvas id="stars"></canvas>
+
+<section class="relative w-full h-screen overflow-hidden">
+  <!-- Nav dots auto-populate via JS based on SLIDE_IDS below -->
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 flex gap-2 z-50 flex-wrap justify-center max-w-3xl" id="dots"></nav>
+
+  <!-- ============================================================
+       SLIDES — add / remove / edit freely.
+       Each slide is a <div id="sN" class="slide-section ..."> block.
+       The FIRST slide must have class "slide-active", all others
+       "slide-inactive". Then add its id string to the SLIDE_IDS
+       array in the script at the bottom, in order.
+
+       COMPONENT LIBRARY (copy/paste these patterns):
+
+       Title/section badge:
+         <div class="badge px-4 py-1.5 text-xs font-semibold tracking-wide uppercase mb-4 inline-block">Label</div>
+
+       Gradient highlight text:
+         <span class="glow-text">highlighted phrase</span>
+
+       Glass card:
+         <div class="glass p-6"> ... </div>
+
+       Icon chip (emoji or short symbol):
+         <div class="icon-box mb-4 text-xl">🔧</div>
+
+       Numbered step chip:
+         <div class="step-num mb-3">1</div>
+
+       Pulsing highlight box (use sparingly, e.g. closing slide):
+         <div class="glass p-6 pulse"> ... </div>
+       ============================================================ -->
+
+  <!-- Slide 1: Title -->
+  <div id="s1" class="slide-section slide-active text-center">
+    <div class="badge px-4 py-1.5 text-xs font-semibold tracking-wide uppercase mb-8 inline-block">Eyebrow / Category</div>
+    <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight"><span class="glow-text">Deck Title</span></h1>
+    <p class="text-gray-400 text-lg max-w-2xl mx-auto">One-line subtitle or tagline describing the deck</p>
+  </div>
+
+  <!-- Slide 2: Example — 2x2 grid of cards -->
+  <div id="s2" class="slide-section slide-inactive">
+    <div class="text-center mb-10">
+      <div class="badge px-4 py-1.5 text-xs font-semibold tracking-wide uppercase mb-4 inline-block">Section Label</div>
+      <h2 class="text-4xl md:text-5xl font-bold leading-tight">Section heading with <span class="glow-text">emphasis</span></h2>
+      <p class="text-gray-500 mt-4">Optional supporting subheading</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="glass p-6">
+        <div class="icon-box mb-4 text-xl">🔧</div>
+        <h3 class="font-semibold mb-1">Point one</h3>
+        <p class="text-gray-400 text-sm">Short supporting description.</p>
+      </div>
+      <div class="glass p-6">
+        <div class="icon-box mb-4 text-xl">📋</div>
+        <h3 class="font-semibold mb-1">Point two</h3>
+        <p class="text-gray-400 text-sm">Short supporting description.</p>
+      </div>
+      <div class="glass p-6">
+        <div class="icon-box mb-4 text-xl">📎</div>
+        <h3 class="font-semibold mb-1">Point three</h3>
+        <p class="text-gray-400 text-sm">Short supporting description.</p>
+      </div>
+      <div class="glass p-6">
+        <div class="icon-box mb-4 text-xl">🤝</div>
+        <h3 class="font-semibold mb-1">Point four</h3>
+        <p class="text-gray-400 text-sm">Short supporting description.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: Example — numbered process flow -->
+  <div id="s3" class="slide-section slide-inactive">
+    <div class="text-center mb-10">
+      <div class="badge px-4 py-1.5 text-xs font-semibold tracking-wide uppercase mb-4 inline-block">Process</div>
+      <h2 class="text-4xl md:text-5xl font-bold">How it <span class="glow-text">works</span></h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="glass p-5">
+        <div class="step-num mb-3">1</div>
+        <h3 class="font-semibold mb-1 text-sm">Step one</h3>
+        <p class="text-gray-400 text-xs">Short description of this step.</p>
+      </div>
+      <div class="glass p-5">
+        <div class="step-num mb-3">2</div>
+        <h3 class="font-semibold mb-1 text-sm">Step two</h3>
+        <p class="text-gray-400 text-xs">Short description of this step.</p>
+      </div>
+      <div class="glass p-5">
+        <div class="step-num mb-3">3</div>
+        <h3 class="font-semibold mb-1 text-sm">Step three</h3>
+        <p class="text-gray-400 text-xs">Short description of this step.</p>
+      </div>
+      <div class="glass p-5">
+        <div class="step-num mb-3">4</div>
+        <h3 class="font-semibold mb-1 text-sm">Step four</h3>
+        <p class="text-gray-400 text-xs">Short description of this step.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: Example — stat highlight -->
+  <div id="s4" class="slide-section slide-inactive text-center">
+    <div class="badge px-4 py-1.5 text-xs font-semibold tracking-wide uppercase mb-4 inline-block">Data / Proof</div>
+    <h2 class="text-4xl md:text-5xl font-bold mb-8">Headline framing the <span class="glow-text">numbers</span></h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="glass p-8">
+        <div class="text-4xl font-black glow-text mb-2">XX%</div>
+        <p class="text-gray-400 text-sm">Description of this statistic.</p>
+      </div>
+      <div class="glass p-8">
+        <div class="text-4xl font-black glow-text mb-2">XX%</div>
+        <p class="text-gray-400 text-sm">Description of this statistic.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: Example — closing statement -->
+  <div id="s5" class="slide-section slide-inactive text-center">
+    <div class="badge px-4 py-1.5 text-xs font-semibold tracking-wide uppercase mb-6 inline-block">Closing</div>
+    <h2 class="text-5xl font-black mb-6">Closing line that lands<br><span class="glow-text">the final message.</span></h2>
+    <div class="glass p-6 max-w-xl mx-auto pulse mt-8">
+      <p class="text-white font-medium">One-line reinforcing tagline.</p>
+    </div>
+  </div>
+
+  <div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-50 items-center">
+    <button id="prev" onclick="go(-1)" disabled class="glass px-5 py-2.5 text-gray-400 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-default">&larr; Prev</button>
+    <span id="counter" class="text-gray-500 text-sm tabular-nums">1 / X</span>
+    <button id="next" onclick="go(1)" class="glass px-5 py-2.5 text-gray-400 hover:text-white transition-colors">&rarr; Next</button>
+  </div>
+</section>
+
+<script>
+/* ============================================================
+   CONFIG — the only thing you must update when adding/removing
+   slides is this array, in slide order, matching each div's id.
+   ============================================================ */
+var slides = ['s1','s2','s3','s4','s5'];
+var cur = 0;
+
+function render() {
+  var dots = document.getElementById('dots');
+  dots.innerHTML = slides.map(function(_,i){ return '<div class="dot'+(i===cur?' active':'')+'"></div>'; }).join('');
+  document.getElementById('prev').disabled = cur === 0;
+  document.getElementById('next').disabled = cur === slides.length - 1;
+  document.getElementById('counter').textContent = (cur+1) + ' / ' + slides.length;
+}
+
+function go(dir) {
+  var next = cur + dir;
+  if (next < 0 || next >= slides.length) return;
+  var leaving = document.getElementById(slides[cur]);
+  var entering = document.getElementById(slides[next]);
+  leaving.className = leaving.className.replace('slide-active','slide-inactive');
+  entering.className = entering.className.replace('slide-inactive','slide-active');
+  cur = next; render();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+});
+
+/* Ambient particle background — theme element, no need to edit */
+var c = document.getElementById('stars'), ctx = c.getContext('2d');
+var pts = [];
+var mouse = { x: -1000, y: -1000 };
+
+function resize(){ c.width=innerWidth; c.height=innerHeight }
+window.addEventListener('resize',resize); resize();
+
+window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener('mouseout', function() { mouse.x = -1000; mouse.y = -1000; });
+
+for(var i=0;i<80;i++) pts.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+.5,s:Math.random()*3+1,o:Math.random()*.4+.1});
+
+(function loop(){
+  ctx.clearRect(0,0,c.width,c.height);
+  pts.forEach(function(p){
+    var dx = p.x - mouse.x;
+    var dy = p.y - mouse.y;
+    var dist = Math.sqrt(dx*dx + dy*dy);
+
+    if(dist < 150) {
+      p.x += dx * 0.02;
+      p.y += dy * 0.02;
+    }
+
+    p.y -= p.s*.3;
+
+    if(p.y < 0) { p.y = c.height; p.x = Math.random()*c.width; }
+    if(p.x < 0) p.x = c.width;
+    if(p.x > c.width) p.x = 0;
+
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(129,140,248,'+p.o+')';ctx.fill();
+  });
+  requestAnimationFrame(loop);
+})();
+
+render();
+</script>
+</body>
+</html>
