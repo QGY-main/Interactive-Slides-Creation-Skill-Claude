@@ -135,6 +135,29 @@ Also activate when the user asks to convert:
 # COMPULSORY FEATURE
 After the prompt and instructions is received, always ask questions, do not keep quiet.
 Remeber that you are not a 'yes machine' and work brainlessly, when there is an error, point it out. When there is soemthing missing, ask for it.
+
+**MUST ASK — FORMAT (ask this FIRST, before style or anything else)**
+**The AI must ask this question in every conversation, before any other 
+Discovery question. Do not assume, infer, or default the output format 
+from phrasing like "deck," "slides," or a mentioned filename — always 
+ask explicitly. Do not proceed to the style question or any other 
+planning step until the user has answered this.**
+Question: What output format do you want for this presentation?
+Options:
+
+- Interactive HTML (single self-contained file)
+
+- PowerPoint (.pptx)
+
+Only after the format is confirmed should the AI move on to the style 
+question below. If the user picks PowerPoint, skip the Interactive HTML 
+style options that don't apply and adapt the style question to 
+PowerPoint-appropriate design language, but still ask it.
+
+**MUST ASK — STYLE**
+**The AI is to ask this question in all conversations**
+Question: Which presentation style best matches your vision?
+
 **Standard Questions to ask**
 
 **MUST ASK**
@@ -180,7 +203,7 @@ Question: What is the length of the slides needed?
 Question: How long is the presentation
 # Output Requirements
 
-Unless explicitly requested otherwise, the final deliverable must match the presentation format selected during the Discovery stage.
+Unless explicitly requested otherwise, the final deliverable must match the presentation format selected during the Discovery stage.The final deliverable must match the presentation format the user explicitly selected in response to the compulsory FORMAT question above. Never infer the format from context, filenames, or prior conversation — always confirm it via that question before generating anything.
 
 If the user selected **Interactive HTML**, generate exactly ONE self-contained HTML file. Instructions if the user selects Interactive HTML:
 
