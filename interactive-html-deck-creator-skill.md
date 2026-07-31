@@ -4723,22 +4723,22 @@ canvas {
     </div>
     <div class="grid md:grid-cols-2 gap-5">
       <div class="glass p-6">
-        <div class="icon-box mb-4 text-xl">🔧</div>
+        <div class="icon-box mb-4 text-xl"></div>
         <h3 class="font-semibold mb-1">Point one</h3>
         <p class="text-gray-400 text-sm">Short supporting description.</p>
       </div>
       <div class="glass p-6">
-        <div class="icon-box mb-4 text-xl">📋</div>
+        <div class="icon-box mb-4 text-xl"></div>
         <h3 class="font-semibold mb-1">Point two</h3>
         <p class="text-gray-400 text-sm">Short supporting description.</p>
       </div>
       <div class="glass p-6">
-        <div class="icon-box mb-4 text-xl">📎</div>
+        <div class="icon-box mb-4 text-xl"></div>
         <h3 class="font-semibold mb-1">Point three</h3>
         <p class="text-gray-400 text-sm">Short supporting description.</p>
       </div>
       <div class="glass p-6">
-        <div class="icon-box mb-4 text-xl">🤝</div>
+        <div class="icon-box mb-4 text-xl"></div>
         <h3 class="font-semibold mb-1">Point four</h3>
         <p class="text-gray-400 text-sm">Short supporting description.</p>
       </div>
