@@ -43,24 +43,8 @@ Once the skill is engaged, Claude will follow its script exactly: before generat
 
 Just tap or type your answer, then answer the follow-up style question (Apple Product Reveal, Linear, Stripe, Glassmorphism, etc.) and any other clarifying questions Claude raises. Once you've answered everything, Claude will generate the deck as an artifact you can preview inline, download, and open directly in a browser (for HTML) or in PowerPoint.
 
-> Note: exact menu names/locations for Skills may change as Claude's product evolves — if what you see differs from the screenshots above, check Anthropic's latest documentation at [docs.claude.com](https://docs.claude.com).
-
 ## Example output
 
 The generated HTML decks include:
 - A title slide, content slides (grids, process flows, stat highlights), and a closing slide
-- A dark, glassmorphic aesthetic with gradient accents and an ambient animated particle background
-- Keyboard (arrow key) and button-based navigation with a progress counter and nav dots
-
 See the `/screenshots` folder in this repo for the walkthrough images referenced above, showing the Skills upload flow and the discovery-question flow in action.
-
-## Customizing
-
-The skill file is plain markdown/text — feel free to fork and edit:
-- Add or remove presentation styles from the style question
-- Change the compulsory discovery questions
-- Adjust the HTML component library (colors, fonts, animations) at the bottom of the skill file
-
-## License
-
-Add your license of choice here (e.g. MIT).
