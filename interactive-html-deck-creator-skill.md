@@ -1,5 +1,5 @@
 ---
-name: interactive-html-deck-creator-2
+name: interactive-html-deck-creator-3
 description: >
   Use this skill whenever the user wants to create, design, improve,
   or convert content into a professional interactive HTML presentation.
@@ -8,8 +8,7 @@ description: >
   collaborate with the user to shape the narrative, visuals, and interaction
   rather than simply formatting slides.
 
-version: 2.0
-author: OpenAI + User Customization
+version: 3.0
 tags:
   - presentation
   - slide-deck
